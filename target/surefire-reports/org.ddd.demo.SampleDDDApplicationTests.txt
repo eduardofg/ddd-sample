@@ -1,9 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.ddd.demo.SampleDDDApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.423 s <<< FAILURE! - in org.ddd.demo.SampleDDDApplicationTests
-contextLoads(org.ddd.demo.SampleDDDApplicationTests)  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: mappedBy reference an unknown target entity property: org.ddd.demo.infra.AlunoModel.alunos_turma in org.ddd.demo.infra.TurmaModel.alunos
-Caused by: org.hibernate.AnnotationException: mappedBy reference an unknown target entity property: org.ddd.demo.infra.AlunoModel.alunos_turma in org.ddd.demo.infra.TurmaModel.alunos
-
