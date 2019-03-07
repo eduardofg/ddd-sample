@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.ddd.demo.domain.Turma;
-import org.ddd.demo.domain.TurmaDomainRepository;
+import org.ddd.demo.domain.Professor;
+import org.ddd.demo.domain.ProfessorRepository;
 import org.ddd.demo.domain.UniqueId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,30 +16,31 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class TurmaRepository implements TurmaDomainRepository {
+public class ProfessorDomainRepository implements ProfessorRepository {
 
     @Autowired
-    private TurmaModelRepository repository;
+    private ProfessorModelRepository repository;
 
     @Lazy
     @Autowired
     private ConversionService conversionService;
 
     @Transactional(readOnly = true)
-    public Optional<Turma> get(final UniqueId id) {
+    public Optional<Professor> get(final UniqueId id) {
+
         try {
             return id == null ? Optional.empty()
-                    : Optional.ofNullable(conversionService.convert(repository.getOne(id.toString()), Turma.class));
+                    : Optional.ofNullable(conversionService.convert(repository.getOne(id.toString()), Professor.class));
         } catch (EntityNotFoundException e) {
             return Optional.empty();
         }
     }
 
-    public void store(final Turma turma) {
-        repository.save(conversionService.convert(turma, TurmaModel.class));
+    public void store(final Professor professor) {
+        repository.save(conversionService.convert(professor, ProfessorModel.class));
     }
     
-    public List<Turma> findAll() {
-        return repository.findAll().stream().map(turma -> conversionService.convert(turma, Turma.class)).collect(Collectors.toList());
+    public List<Professor> findAll() {
+        return repository.findAll().stream().map(professor -> conversionService.convert(professor, Professor.class)).collect(Collectors.toList());
     }
 }

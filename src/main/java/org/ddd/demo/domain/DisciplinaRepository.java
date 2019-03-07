@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.ddd.demo.domain.Disciplina;
 import org.ddd.demo.domain.UniqueId;
 
-public interface DisciplinaDomainRepository {
+public interface DisciplinaRepository {
 
     public Optional<Disciplina> get(final UniqueId id);
 

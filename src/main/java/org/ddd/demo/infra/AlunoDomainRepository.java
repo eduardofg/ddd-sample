@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.ddd.demo.domain.Professor;
-import org.ddd.demo.domain.ProfessorDomainRepository;
+import org.ddd.demo.domain.Aluno;
+import org.ddd.demo.domain.AlunoRepository;
 import org.ddd.demo.domain.UniqueId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,31 +16,31 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class ProfessorRepository implements ProfessorDomainRepository {
+public class AlunoDomainRepository implements AlunoRepository{
 
     @Autowired
-    private ProfessorModelRepository repository;
+    private AlunoModelRepository repository;
 
     @Lazy
     @Autowired
     private ConversionService conversionService;
 
     @Transactional(readOnly = true)
-    public Optional<Professor> get(final UniqueId id) {
+    public Optional<Aluno> get(final UniqueId id) {
 
         try {
             return id == null ? Optional.empty()
-                    : Optional.ofNullable(conversionService.convert(repository.getOne(id.toString()), Professor.class));
+                    : Optional.ofNullable(conversionService.convert(repository.getOne(id.toString()), Aluno.class));
         } catch (EntityNotFoundException e) {
             return Optional.empty();
         }
     }
 
-    public void store(final Professor professor) {
-        repository.save(conversionService.convert(professor, ProfessorModel.class));
+    public void store(final Aluno aluno) {
+        repository.save(conversionService.convert(aluno, AlunoModel.class));
     }
     
-    public List<Professor> findAll() {
-        return repository.findAll().stream().map(professor -> conversionService.convert(professor, Professor.class)).collect(Collectors.toList());
+    public List<Aluno> findAll() {
+        return repository.findAll().stream().map(aluno -> conversionService.convert(aluno, Aluno.class)).collect(Collectors.toList());
     }
 }

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.ddd.demo.domain.Turma;
 import org.ddd.demo.domain.UniqueId;
 
-public interface TurmaDomainRepository {
+public interface TurmaRepository {
 
     public Optional<Turma> get(final UniqueId id);
 

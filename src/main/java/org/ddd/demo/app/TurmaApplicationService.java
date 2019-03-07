@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.ddd.demo.domain.Aluno;
 import org.ddd.demo.domain.Disciplina;
 import org.ddd.demo.domain.Turma;
-import org.ddd.demo.infra.AlunoRepository;
-import org.ddd.demo.infra.DisciplinaRepository;
-import org.ddd.demo.infra.TurmaRepository;
+import org.ddd.demo.infra.AlunoDomainRepository;
+import org.ddd.demo.infra.DisciplinaDomainRepository;
+import org.ddd.demo.infra.TurmaDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class TurmaApplicationService {
 
     @Autowired
-    private TurmaRepository turmaRepository;
+    private TurmaDomainRepository turmaRepository;
 
     @Autowired
-    private AlunoRepository alunoRepository;
+    private AlunoDomainRepository alunoRepository;
 
     @Autowired
-    private DisciplinaRepository disciplinaRepository;
+    private DisciplinaDomainRepository disciplinaRepository;
 
     public void handle(final AbrirTurmaCommand cmd) {
 

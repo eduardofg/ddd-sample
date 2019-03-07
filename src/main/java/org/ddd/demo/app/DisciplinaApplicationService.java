@@ -2,8 +2,8 @@ package org.ddd.demo.app;
 
 import org.ddd.demo.domain.Disciplina;
 import org.ddd.demo.domain.Professor;
-import org.ddd.demo.infra.DisciplinaRepository;
-import org.ddd.demo.infra.ProfessorRepository;
+import org.ddd.demo.infra.DisciplinaDomainRepository;
+import org.ddd.demo.infra.ProfessorDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class DisciplinaApplicationService {
 
     @Autowired
-    private DisciplinaRepository disciplinaRepository;
+    private DisciplinaDomainRepository disciplinaRepository;
 
     @Autowired
-    private ProfessorRepository professorRepository;
+    private ProfessorDomainRepository professorRepository;
 
     public void handle(final IncluirDisciplinaCommand cmd) {
 

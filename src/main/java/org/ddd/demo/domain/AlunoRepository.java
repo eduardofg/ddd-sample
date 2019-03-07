@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.ddd.demo.domain.Aluno;
 import org.ddd.demo.domain.UniqueId;
 
-public interface AlunoDomainRepository {
+public interface AlunoRepository {
 
     public Optional<Aluno> get(final UniqueId id);
 

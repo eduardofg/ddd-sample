@@ -9,7 +9,7 @@ import org.ddd.demo.app.IncluirProfessorCommand;
 import org.ddd.demo.app.ProfessorApplicationService;
 import org.ddd.demo.domain.Nome;
 import org.ddd.demo.domain.ProfessorId;
-import org.ddd.demo.infra.ProfessorRepository;
+import org.ddd.demo.infra.ProfessorDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +28,7 @@ public class ProfessorController {
     private ProfessorApplicationService professorService;
 
     @Autowired
-    private ProfessorRepository professorRepository;
+    private ProfessorDomainRepository professorRepository;
     
     @GetMapping(path = "/")
     public List<ProfessorDTO> findAll() {

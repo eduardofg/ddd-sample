@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.ddd.demo.domain.Professor;
 
-public interface ProfessorDomainRepository {
+public interface ProfessorRepository {
 
     public Optional<Professor> get(final UniqueId id);
 

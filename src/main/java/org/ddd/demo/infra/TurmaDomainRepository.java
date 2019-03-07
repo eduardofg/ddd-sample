@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.ddd.demo.domain.Disciplina;
-import org.ddd.demo.domain.DisciplinaDomainRepository;
+import org.ddd.demo.domain.Turma;
+import org.ddd.demo.domain.TurmaRepository;
 import org.ddd.demo.domain.UniqueId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,32 +16,30 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class DisciplinaRepository implements DisciplinaDomainRepository {
+public class TurmaDomainRepository implements TurmaRepository {
 
     @Autowired
-    private DisciplinaModelRepository repository;
+    private TurmaModelRepository repository;
 
     @Lazy
     @Autowired
     private ConversionService conversionService;
 
     @Transactional(readOnly = true)
-    public Optional<Disciplina> get(final UniqueId id) {
-
+    public Optional<Turma> get(final UniqueId id) {
         try {
             return id == null ? Optional.empty()
-                    : Optional
-                            .ofNullable(conversionService.convert(repository.getOne(id.toString()), Disciplina.class));
+                    : Optional.ofNullable(conversionService.convert(repository.getOne(id.toString()), Turma.class));
         } catch (EntityNotFoundException e) {
             return Optional.empty();
         }
     }
 
-    public void store(final Disciplina disciplina) {
-        repository.save(conversionService.convert(disciplina, DisciplinaModel.class));
+    public void store(final Turma turma) {
+        repository.save(conversionService.convert(turma, TurmaModel.class));
     }
     
-    public List<Disciplina> findAll() {
-        return repository.findAll().stream().map(disciplina -> conversionService.convert(disciplina, Disciplina.class)).collect(Collectors.toList());
+    public List<Turma> findAll() {
+        return repository.findAll().stream().map(turma -> conversionService.convert(turma, Turma.class)).collect(Collectors.toList());
     }
 }

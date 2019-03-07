@@ -1,7 +1,7 @@
 package org.ddd.demo.app;
 
 import org.ddd.demo.domain.Aluno;
-import org.ddd.demo.infra.AlunoRepository;
+import org.ddd.demo.infra.AlunoDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AlunoApplicationService {
 
     @Autowired
-    private AlunoRepository alunoRepository;
+    private AlunoDomainRepository alunoRepository;
 
     public void handle(final IncluirAlunoCommand cmd) {
 

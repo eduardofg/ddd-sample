@@ -10,7 +10,7 @@ import org.ddd.demo.app.IncluirDisciplinaCommand;
 import org.ddd.demo.domain.DisciplinaId;
 import org.ddd.demo.domain.Nome;
 import org.ddd.demo.domain.ProfessorId;
-import org.ddd.demo.infra.DisciplinaRepository;
+import org.ddd.demo.infra.DisciplinaDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +29,7 @@ public class DisciplinaController {
     private DisciplinaApplicationService disciplinaService;
 
     @Autowired
-    private DisciplinaRepository disciplinaRepository;
+    private DisciplinaDomainRepository disciplinaRepository;
     
     @GetMapping(path = "/")
     public List<DisciplinaDTO> findAll() {

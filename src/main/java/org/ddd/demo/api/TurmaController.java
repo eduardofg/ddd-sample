@@ -11,7 +11,7 @@ import org.ddd.demo.domain.AlunoId;
 import org.ddd.demo.domain.DisciplinaId;
 import org.ddd.demo.domain.Nome;
 import org.ddd.demo.domain.TurmaId;
-import org.ddd.demo.infra.TurmaRepository;
+import org.ddd.demo.infra.TurmaDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,7 +30,7 @@ public class TurmaController {
     private TurmaApplicationService turmaService;
 
     @Autowired
-    private TurmaRepository turmaRepository;
+    private TurmaDomainRepository turmaRepository;
 
     @GetMapping(path = "/")
     public List<TurmaDTO> findAll() {

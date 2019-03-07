@@ -9,7 +9,7 @@ import org.ddd.demo.app.AlunoApplicationService;
 import org.ddd.demo.app.IncluirAlunoCommand;
 import org.ddd.demo.domain.AlunoId;
 import org.ddd.demo.domain.Nome;
-import org.ddd.demo.infra.AlunoRepository;
+import org.ddd.demo.infra.AlunoDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +28,7 @@ public class AlunoController {
     private AlunoApplicationService alunoService;
 
     @Autowired
-    private AlunoRepository alunoRepository;
+    private AlunoDomainRepository alunoRepository;
 
     @GetMapping(path = "/")
     public List<AlunoDTO> findAll() {
